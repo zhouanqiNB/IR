@@ -1,0 +1,42 @@
+# IdMap
+
+成员：
+
+- 字典`str_to_id`
+
+  key是字符串，value是数字。（显然不能用列表）
+
+- 列表`id_to_str`
+
+函数
+
+- `_get_str(self, i)`
+
+  输入id返回字符串
+
+- `_get_id(self, s)`
+
+  输入字符串返回id
+
+- `_getitem_(key)`
+
+  输入其中之一，返回另一个
+
+测试样例
+
+```python
+testIdMap = IdMap()
+# 在map里加上 'a':0 这一对，再加上‘bcd’:1 这一对
+assert testIdMap['a'] == 0, "Unable to add a new string to the IdMap"
+assert testIdMap['bcd'] == 1, "Unable to add a new string to the IdMap"
+# 是否可以检索到 'a' 的 id，检测到 1 对应的 str
+assert testIdMap['a'] == 0, "Unable to retrieve the id of an existing string"
+assert testIdMap[1] == 'bcd', "Unable to retrive the string corresponding to a\
+                                given id"
+try:
+    testIdMap[2]
+except IndexError as e:
+    assert True, "Doesn't throw an IndexError for out of range numeric ids"
+assert len(testIdMap) == 2
+```
+

@@ -1,0 +1,86 @@
+# 实验日志
+
+https://github.com/Lichuanro/Information-Retrieval-and-Web-Search/blob/master/pa1/PA1.ipynb
+
+```
+C:\Users\16834>conda --version
+conda 4.10.3
+```
+
+1. [索引构建 (40%)](http://localhost:8888/notebooks/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/air2-hw1-2021/hw1-skeleton.ipynb#%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%A3%80%E7%B4%A2-(40%)) 使用BSBI方法模拟在内存不足的情况下的索引构建方式，并应用于布尔查询
+2. [索引压缩 (30%)](http://localhost:8888/notebooks/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/air2-hw1-2021/hw1-skeleton.ipynb#%E7%B4%A2%E5%BC%95%E5%8E%8B%E7%BC%A9-(30%)) 使用可变长编码对构建的索引进行压缩
+3. [布尔检索 (10%)](http://localhost:8888/notebooks/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/air2-hw1-2021/hw1-skeleton.ipynb#%E5%B8%83%E5%B0%94%E8%81%94%E5%90%88%E6%A3%80%E7%B4%A2-(10%)) 对空格分隔的单词查询进行联合（与）布尔检索
+4. [实验报告 (10%)](http://localhost:8888/notebooks/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/air2-hw1-2021/hw1-skeleton.ipynb#Report-(25%)) 描述你的代码并回答一些问题
+5. [额外的编码方式 (10%)](http://localhost:8888/notebooks/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/air2-hw1-2021/hw1-skeleton.ipynb#%E9%A2%9D%E5%A4%96%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F-(10%)) 鼓励使用额外的编码方式对索引进行压缩 (例如, gamma-encoding)
+
+## 1 需要解决的问题
+
+> - 什么是jupyter
+> - 什么是BSBI
+> - 什么是布尔查询
+> - 什么是在内存不足的情况下的索引构建
+> - 什么是可变长编码
+> - 什么是gamma-encoding
+
+### 1.1 什么是jupyter
+
+Jupyter是一个非营利组织，旨在“为数十种编程语言的交互式计算开发开源软件，开放标准和服务”。
+
+Jupyter Project的名称表示Jupyter支持的其中三种内核编程语言：Julia、Python和R。
+
+#### jupyter notebook
+
+Jupyter Notebook是一个基于Web的交互式计算环境，用于创建Jupyter Notebook文档。Jupyter Notebook文档是一个JSON文档，通常以“.ipynb”结尾扩展。
+
+Jupyter Notebook提供了一个基于浏览器的[REPL](https://zh.wikipedia.org/wiki/REPL)，它建立在一些流行的开源库之上
+
+> **REPL**
+>
+> “读取-求值-输出”循环（英语：Read-Eval-Print Loop，简称REPL），也被称做交互式顶层构件（英语：interactive toplevel），是一个简单的，交互式的编程环境。
+
+## 2 数据集下载
+
+运行代码即可。
+
+## 3 索引构建与检索 (40%)
+
+作业的第一部分是用BSBI算法来构建索引并且实现布尔检索。
+
+### 3.1 什么是BSBI
+
+https://nlp.stanford.edu/IR-book/pdf/04const.pdf
+
+阅读笔记参看 `Introduction to Information Retrieval阅读笔记.txt`
+
+### 3.2 IdMap
+
+先把term->termID(number), doc->docID(number)
+
+### 3.3 将倒排列表编码成字节数组
+
+该类可以实现编码和解码
+
+![image-20211018141553276](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/1%20%E5%AE%9E%E9%AA%8C1%2010.20/image-20211018141553276.png)
+
+### 3.4 磁盘上的倒排索引
+
+在数据集比较大，内存内完成不了的时候，一部分数据需要存在磁盘上，我们需要最小化访问磁盘的次数。
+
+`Inverted Index`
+
+一个实现了从磁盘高效读写倒排索引的类。
+
+- posting_dict: termId->(posting list在索引文件的起始位置，列表中postingde 数目，posting list的长度（按字节）)
+
+  它把termID映射到一个三元组。
+
+  列表中posting 数目：就是说，有多少个docID
+
+- terms: List[int]
+
+  记住我们是先存哪一个term的posting list
+
+## 索引
+
+每个子目录当做一个块，在构建索引的时候每次只能加载一个块。
+

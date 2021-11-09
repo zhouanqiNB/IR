@@ -1,0 +1,11 @@
+```
+C:\Users\16834>jupyter notebook
+'jupyter' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+```
+
+https://www.pianshen.com/article/12001580135/
+
+成功打开了一次然后继续`Navigater Error`...
+
+好的我重新安装了，又行了。

@@ -1,0 +1,187 @@
+>FANG: Leveraging Social Context for Fake News Detection Using Graph Representation
+
+# ABSTRACT
+
+我们提出了Factual News Graph (FANG)，它给出了一个新型的图的==social context的repesentation==、和fake news detection的学习框架。以前，我们专注性能，现在我们focus representation learning。
+
+与transductive models相比，FANG is scalable in training，因为它不需要maintain all nodes，efficient at inference time，不需要reprocess整个图。
+
+与最近的图形和非图形模型相比，FANG对于social context的表示更加高保真。特别是，FANG能力和robust方面不错。而且，FANG学到的representation可以推广到相关的任务。
+
+> 什么是transductive learning
+>
+> - 和inductive相对，具体我不明白
+
+# 1 INTRODUCTION
+
+目前一般是人工审核，这需要大量的人力。
+
+一些最近的工作采取了另一种方式，探索了新闻传播过程中的 contextual features。他们发现==网民对真/假新闻的反应不一样==。
+
+![image-20211102093254702](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/2%20%E5%AE%9E%E9%AA%8C2%2011.7/image-20211102093254702.png)
+
+- ==假新闻==在刚发布就有很多engagements。它们主要是逐句的转发，带着对原po的负面情绪（因为原po内容耸动，一看就是假新闻）。在这个短时间段之后，我们看到质疑新闻真实性的反对帖子，之后the stance distribution stabilizes afterwards with virtually no support。
+- ==真新闻==引发了moderate engagement，主要由中立的情绪组成，很快就趋于稳定。这种用户的观点在分辨假新闻上很有用。
+
+之前的工作提出了social context 的部分representation，包括：**major entities**（新闻、源、用户）、**major interactions**（立场、friendship、publication）。
+
+但是他们完全不关心quality of representation & 对entity及其互动的建模 & minimally supervised settings
+
+>异质网络(heterogeneous network)
+>
+>是一种网络系统，这个系统由不同操作系统和/或执行不同协定的电脑所组成。举例来说，连接微软公司Windows操作系统，Linux和苹果电脑麦金塔电脑的局域网络便是异质网络。
+
+==新闻传播的 social context可以被表示为异质网络(heterogeneous network)，其中节点和边分别表示社会实体和他们之间的联系。==
+
+network representation优点（与几何方法相比）：对于某些场景（比如信息茧房和网络的极化）的结构性建模能力更强。图形模型允许实体之间交流信息，通过
+
+- **同质边**（i.e. 用户与用户的关系，源与源的引用）
+- **异质边**(i.e. 用户对新闻的立场, source–news publication)，
+- **high-order proximity** (i.e., 有一些用户持续支持/反对一些消息源)。
+
+所以异质实体的表示is dependent，不仅可以用于fake news detection，还可以用于 social analysis tasks（恶意用户检测和消息来源可靠性预测） 。
+
+<img src="C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/2%20%E5%AE%9E%E9%AA%8C2%2011.7/image-20211102093325596.png" alt="image-20211102093325596" style="zoom:67%;" />
+
+我们的工作主要是enhance representations of social entities来做假新闻检测。main contributions:
+
+1. 提出了一个新型的图的表示，来model  all major social actors and their interactions
+2. 提出FANG，这是一个 inductive graph learning framework 高效地捕捉社会结构和参与模式，提高representation quality. 
+3. 在有限的数据集上表现不错。
+4. 通过FANG学到的representation可以推广到相关的任务，如预测新闻媒体报道的真实性。
+5. 我们证明了FANG的可解释性，因为thanks to the attention mechanism of its recurrent aggregator.（RNN?）
+
+>**Attention Mechanism**
+>
+>Attention Mechanism目前非常流行，广泛应用于机器翻译、语音识别、图像标注（Image Caption）等很多领域。
+>
+>Attention给模型赋予了区分辨别的能力，例如，在机器翻译、语音识别应用中，为句子中的每个词赋予不同的权重，使神经网络模型的学习变得更加灵活（soft）。
+>
+>Attention本身可以作为一种对齐关系，解释翻译输入/输出句子之间的对齐关系，解释**模型到底学到了什么知识**，为我们打开深度学习的黑箱，提供了一个窗口，如图1所示。
+
+>**recurrent aggregator**
+>
+>????
+
+# 2 RELATED WORK
+
+首先，回顾了现有的上下文假新闻检测工作，这些工作中新闻的 social context的表现方式。
+
+然后，我们详细介绍了Graph Neural Network (GNN) formalism 的最新进展，这构成了我们提出的图形学习框架的前提。
+
+## 2.1 Contextual Fake News Detection
+
+对以前的contextual fake news detection的work，按照表示和学习social context的方法 分类
+
+==Euclidean approaches== 把social context表示为一个向量或者一个实数组成的矩阵。通常来说，这种方法会learn a Euclidean transformation of the social entity features that best approximates the fake news prediction. 这种transformation的复杂度互相之间也不一样：
+
+- **有传统的shallow models**
+
+  Random Forest or Support Vector Machines (SVM) 
+
+- **probabilistic graphical models** 
+
+- **deep neural networks**
+
+  Long Short-Term Memory (LSTM) that model engagement temporality. （时间性）
+
+但是，因为==我们的模型想要把social context 表示成一个异质网络==，这种representation表达能力不好。虽然先进的工作**加入了一些user attributes**（人口统计学、对于新闻的偏好、社会特征--有多少粉丝和朋友）但是，他们**没有捕捉到用户之间的interaction**（他们follow哪些social figures，他们喜欢或者讨厌哪些新闻话题）。在 graphical representation下，节点不再受分布假设（独立的、相同的）的约束，因此，they can reinforce each other's representation via edge interactions.
+
+在认识到上述局限性后，一些研究人员开始探索非欧方法。他们产生了一个想法，这样来使用social context：
+
+- 通过对一个潜在的**用户、新闻来源的网络**进行建模
+- 通过开发能够**捕捉到entity结构特征**的representation.
+
+==The Capture, Score, and Integrate (CSI)== model used 线性降维 on the 用户共享的邻接矩阵，把它和news engagement features（在RNN中得到） 结合。
+
+==The Tri-Relationship Fake News (TriFN)== detection framework （虽然与我们的方法相似）既没有从stance and temporal patterns上区分用户参与，也没有对source–source citations进行建模。而且矩阵分解方法在图上很昂贵，在high-order proximity建模上不好用。
+
+Other work on citation source network, propagation network, and rumor detection 使用了最近GNN & multi-head attention的进展，来学习局部和全局的结构特征。这些模型只针对假新闻检测做了优化，没有考虑到**representation quality**。如果只有**有限的数据集**，它的结果不robust，不能拓展到下游task。
+
+## 2.2 Graph Neural Networks (GNNs)
+
+GNNs have successfully  ==把深度学习推广来 model 图和流形上的 复杂的关系和相互依赖==。Graph Convolutional Networks (GCNs) are among the first methods that effectively approximate convolutional filters. 然而，GCNs在存储整个邻接矩阵时**占用了大量的内存**，也不容易适应我们的异质图（不同的节点和边的信息传播模式不一样）Furthermore, GCNs 不保证 generalizable representations, 因为 transductive, 要求推断的节点在训练集里。This is especially challenging for 基于上下文的假新闻探测 & 或者整体上的社交网络分析, 因为它们的结构是不断变化的。
+
+> 流形manifold是什么？
+>
+> GCN是什么？
+
+因此，我们在**GraphSage**上构建了我们的工作，GraphSage生成embedding 是依赖于节点的local neighborhood。GraphSage provides 极大的灵活性 in defining 信息传播模式 with parameterized random walks and recurrent aggregators. 它非常适合 representation learning with unsupervised node proximity loss, and generalizes well in minimal supervision settings.此外，它使用动态归纳算法，允许在推理时创建看不见的节点和边。
+
+# 3 METHODOLOGY
+
+## 3.1 Fake News Detection Using Social Context
+
+表3总结了不同类型的互动的特点，包括同质的和异质的。立场是特殊的互动类型，as they are not only characterized by ==edge labels== and ==source/destination nodes==, but also by ==temporality== as shown in earlier examples in Table 1. We use the following stance labels: **neutral support**, **negative support**, **deny**, **report**. The major support and deny stances are consistent with the prior work (e.g., [28]), whereas the two types of support —neutral support and negative support— are based on reported correlation between news factuality and invoked sentiment [1]. We assign the report stance label to a user–news engagement when the user simply spreads the news article without expressing any opinion. 我们使用立场来描述基于对新闻文章的意见的新闻文章，以及社会用户对各种新闻文章的看法。
+
+# 4 EXPERIMENTS
+
+## 4.1 Data
+
+我们在一个由谣言分类[20, 25]和假新闻检测[37]的相关工作收集的Twitter数据集上进行了实验。对于每一篇文章，我们都收集了它的来源、参与用户的名单，以及他们的推文（如果在以前的数据集中还没有这些内容的话）。这个数据集还包括Twitter的简介描述和每个用户关注的Twitter简介列表。
+
+# 5 DISCUSSION
+
+We now answer the following research questions (RQs) to better understand FANG's performance under different scenarios: 
+
+- RQ1: Does FANG work well with **limited training data**?
+- RQ2: Does FANG differentiate between fake and real news based on their contrastive **engagement temporality**?
+- RQ3: How **effective** is FANG's representation learning？
+
+## 5.1 Limited Training Data (RQ1)
+
+即使训练数据集有限，我们的模型也不错。
+
+## 5.2 Engagement Temporality Study (RQ2)
+
+为了回答这个问题，我们we examined FANG's **attention mechanism**. We accumulated the **attention weights** produced by FANG within each **time** window and we compared them across time windows.
+
+我们可以看到，FANG将68.08%的注意力放在新闻文章发布后的前12小时内发生的用户参与上，以决定它==是否是假的==。然后，它的注意力在接下来的24小时内急剧下降到18.83%，然后从发布后的36小时到两周内下降到4.14%，最后从第二周开始下降到大约9.04%。
+
+另一方面，对于==真新闻==，FANG只将48.01%的注意力放在前12小时，然后在12-36小时和36小时-两周的时间窗口中分别下降到17.59%和12.85%。我们还观察到，即使真新闻已经发布了两周，FANG 也保持着21.53%的关注度。
+
+我们模型的特点与人为的观察一致，即由于假新闻的骇人听闻，它在发布后的短时间内引起了最多的参与。另一方面，真正的新闻吸引了较少的参与，但它的传播时间较长，这也解释了为什么FANG在发布两周后仍在持续关注。总的来说，我们能发现这个也得感谢attention mechanism
+
+## 5.3 Representation Learning (RQ3)
+
+我们主要是，想强调，我们用FANG提高了representation的质量，我们在intrinsic and extrinsic evaluations证实了这一点。
+
+In the intrinsic evaluation, 我们证实了 the minimally supervised news representations 对于the fake news detection task 有多generalizable . 我们先对GCN and FANG分别在30%训练数据上运行来得到 news representations. 然后我们对这些representations做聚类， 用一个无监督聚类算法OPTICS，然后我们计算了同质性得分（应该一个聚类一个class，在这一点上有多符合）。这个分数越高,  被分配了同样标签的 新闻文章 和彼此更接近，这产生了更好的representation
+
+> 没看懂这个图
+
+In the extrinsic evaluation，我们证实了 有监督source representation 对于新任务 有多generalizable： 源的真假预测。
+
+我们先在90%的训练集上训练了FANG来获得所有source $s$ 的表示 $z_s=GraphSage(s)$，而且总的representation为：
+
+$$v_s=(z_s,x_s,\Sigma_{a\in publish(s)}x_a)$$(x_s是说源s的表示，a是源s发布的文章，x_a是a的内容的representations)
+
+从数量上看，FANG的OPTICS集群（如图4右上角所示）根据新闻事实性标签达到了0.051的同质性分数，而GCN OPTICS集群的同质性分数为0.0006。这一内在评价表明，FANG在假新闻和真新闻组内都有很强的representation closeness，表明FANG比另一个全监督的图神经框架产生更好的representation
+
+这里是基于文本的表征，因为假新闻网站会模仿真新闻，所以不太行
+
+![image-20211102221940825](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/2%20%E5%AE%9E%E9%AA%8C2%2011.7/image-20211102221940825.png)
+
+可靠的新闻源和不可靠的，引用率肯定不一样，GCN和FANG都使用了这个特性。但是GCN没办法分辨引用率高的假新闻网站。
+
+![image-20211102222152618](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/2%20%E5%AE%9E%E9%AA%8C2%2011.7/image-20211102222152618.png)
+
+引用聚类：雅虎尽管文本不同，但是仍然会因为高互相引用率和其他的媒体聚类在一起。
+
+![image-20211102221612402](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/2%20%E5%AE%9E%E9%AA%8C2%2011.7/image-20211102221612402.png)
+
+## 5.4 Scalable Inductiveness
+
+## 5.5 Microscopic Analysis
+
+## 5.6 Limitations
+
+上游的错误会影响到FANG。
+
+用于上下文假新闻检测的数据集可能很快就会过时，因为发布时的超链接和社交媒体痕迹可能不再能被检索到。
+
+# 6 CONCLUSION AND FUTURE WORK
+
+对于假新闻检测，modeling the social context很重要。FANG在有限训练集上有效，而且用可解释的机制，捕获真新闻和假新闻不同的temporal patterns。
+
+以后我们将对the representations of social users做更多分析。将来打算应用multi-task learning来联合处理fake news detection, source factuality prediction, and echo chamber discovery
