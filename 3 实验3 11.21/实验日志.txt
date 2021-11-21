@@ -1,0 +1,907 @@
+# 1 下载和启动ES
+
+下载linux版本的https://www.elastic.co/cn/downloads/elasticsearch：
+
+![image-20211119144521449](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119144521449.png)
+
+解压：
+```bash
+tar zxvf elasticsearch-7.15.2-linux-x86_64.tar.gz
+```
+
+打开：
+
+```
+bin/elasticsearch
+```
+
+![image-20211119150245776](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119150245776.png)
+
+大概是拉取数据？
+
+```bash
+curl http://localhost:9200/
+```
+
+![image-20211119150311082](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119150311082.png)
+
+# 2 安装python API
+
+```bash
+pip install elasticsearch
+```
+
+![image-20211119150947492](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119150947492.png)
+
+## 测试API
+
+```python
+from datetime import datetime
+from elasticsearch.client import Elasticsearch
+es=Elasticsearch()
+doc={
+	'author':'Information Retrieval',
+	'text':'Text for Elasticsearch',
+	'timestamp':datetime.now(),
+}
+if __name__=="__main__":
+	res= es.index(index="test-index", id=1, document=doc)
+	print(res['result'])
+	res = es.get(index="test-index", id=1)
+	print(res['_source'])
+	es.indices.refresh(index="test-index")
+	res = es.search(index="test-index", query={"match_all": {}})
+	print("Got %d Hits:" % res['hits']['total']['value'])
+	for hit in res['hits']['hits']:
+		print("%(timestamp)s %(author)s: %(text)s"%hit["_source"])
+	print("Test OK")
+```
+
+这里有个很坑的事情就是他实验指导书`doc={}`那里瞎改keyname，所以给我报错，早知道我就该用官网的测试代码。
+
+![image-20211119153615464](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119153615464.png)
+
+在命令行输入
+
+```bash
+curl http://localhost:9200/test-index
+```
+
+输出的东西很不美观
+
+![image-20211119154102733](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119154102733.png)
+
+# 3 安然邮件系统
+
+文件结构
+
+# 4 基本概念
+
+https://endymecy.gitbooks.io/elasticsearch-guide-chinese/content/getting-started/exploring-cluster.html
+
+## 4.1 集群cluster
+
+- 一个集群由一个或者多个节点组织在一起，它们共同持有你全部的数据，并一起提供索引和搜索功能。
+
+- 一个集群由唯一的名字标识，==默认是elasticsearch==。一个节点只能通过指定集群的名字才能加入集群。
+
+## 4.2 节点node
+
+- 一个节点是你集群中的一个服务器，作为集群的一部分，它存储你的数据，参与集群的索引和搜索功能。
+- 和集群类似， 一个节点也是由一个名字来标识的。这个名字用来管理节点。
+- 一个节点可以通过配置集群名称的方式来加入一个指定的集群。 
+
+## 4.3 索引index
+
+一个索引就是一个拥有相似特征的文档的集合。比如对客户数据做索引……
+
+## 4.4 文档document
+
+一个文档是一个可被索引的基础信息单元。
+
+## 4.5 操作集群
+
+### 查看集群和节点
+
+```bash
+curl 'localhost:9200/_cat/health?v'
+curl 'localhost:9200/_cat/nodes?v'
+```
+
+![image-20211119214152037](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119214152037.png)
+
+从中可以看到有一个集群，叫elasticsearch，里面有一个节点，叫COMPUTER-OF-ZAQ
+
+### 查看索引
+
+```bash
+curl 'localhost:9200/_cat/indices?v'
+```
+
+![image-20211119214306301](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119214306301.png)
+
+这是说我们有仨索引。
+
+### 命令行新建索引
+
+```bash
+curl -XPUT 'localhost:9200/customer?pretty'
+curl 'localhost:9200/customer?pretty'
+# 意思是新建了一个customer索引
+# "?pretty"的目的是为了输出好看的json格式
+```
+
+![image-20211119214735073](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119214735073.png)
+
+为什么除了第一个都是黄色标签？黄色意味着某些复制还未被分配。这个索引之所以这样，是因为ES默认为索引创建一份复制。由于现在我们只有一个节点在运行，那一份复制就分配不了了（为了高可用）。直到当另外一个节点加入到这个集群后，才能分配，然后健康状态就会变绿。
+
+### 获取美观的索引
+
+这里`test-index`是`test.py`生成的索引，在链接后面加上`?pretty`就可以输出json形态了。
+
+![img](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/G_D_5T(D)W5SH5%7B%5DEUSSZUQ-1637329914688.png)
+
+### 索引并查询一个文档
+
+```
+集群cluster->节点node->索引index->类型type->ID
+```
+
+现在让我们放一些东西到customer索引中。首先要知道的是，为了索引一个文档，我们必须告诉Elasticsearch这个文档要到这个索引的哪个类型（type）下。
+
+让我们将一个简单的客户文档索引到customer 索引 、“external” 类型中，这个文档的ID是1，操作如下：
+
+> 这里按照原文来会报错，报错解决办法在这里：https://blog.csdn.net/u012551524/article/details/79289072
+
+```bash
+curl -H "Content-Type: application/json" -XPUT 'localhost:9200/customer/external/1?pretty' -d '{"name": "John Doe"}'
+```
+
+![image-20211119222700192](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119222700192.png)
+
+（如果不是先创建了这个索引，而是直接想要创建这样一个内容（写了type&id），ES将会自动创建索引`customer`）
+
+### 取出文件
+
+```bash
+curl -XGET 'localhost:9200/customer/external/1?pretty'
+# 或者
+curl 'localhost:9200/customer/external/1?pretty'
+```
+
+![image-20211119223420952](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119223420952.png)
+
+### 删除一个文档
+
+现在让我们删除我们刚刚创建的索引，并再次列出所有的索引：
+
+```bash
+curl -XDELETE 'localhost:9200/customer?pretty'
+curl 'localhost:9200/_cat/indices?v'
+```
+
+![image-20211119224230827](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211119224230827.png)
+
+## 4.6 总结
+
+总结一下指令：
+
+```bash
+curl -XPUT 'localhost:9200/customer'
+curl -XPUT 'localhost:9200/customer/external/1' -d '{"name": "John Doe"}'
+curl 'localhost:9200/customer/external/1'
+curl -XDELETE 'localhost:9200/customer'
+```
+
+他们的模式都是：
+
+```bash
+curl -X<REST Verb> <Node>:<Port>/<Index>/<Type>/<ID>
+```
+
+# 5 修改数据
+
+## 5.1 索引/替换文档
+
+### 指定id建立索引文档
+
+首先建立索引
+
+```bash
+curl -H "Content-Type: application/json" -XPUT 'localhost:9200/customer/external/1?pretty' -d '{"name": "John Doe"}'
+```
+
+如果更改ID=1的数据：
+
+```bash
+curl -H "Content-Type: application/json" -XPUT 'localhost:9200/customer/external/1?pretty' -d '{"name": "John Doe2"}'
+curl 'localhost:9200/customer/external/1?pretty'
+```
+
+用curl获取之后：
+
+![image-20211120002021036](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120002021036.png)
+
+如果换个ID改数据，原来的数据不会被影响
+
+```bash
+curl -H "Content-Type: application/json" -XPUT 'localhost:9200/customer/external/2?pretty' -d '{"name": "John Doe"}'
+```
+
+![image-20211120002152655](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120002152655.png)
+
+### 不指定id建立索引文档
+
+那么如何在没有指定ID的情况下来索引一个文档呢？（前面说的都是先指定type再指定ID）如果不指定，Elasticsearch将产生一个随机的ID来索引这个文档。Elasticsearch 生成的ID会作为索引API调用的一部分被返回。
+
+由于我们没有指定一个ID，我们使用的是POST而不是PUT。
+
+```bash
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external?pretty' -d '{"name": "Jane Doe"}'
+```
+
+![image-20211120002433831](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120002433831.png)
+
+（咱就是说这个返回的id确实很刁钻`1roCOX0BagJe-b9xXiyI`）
+
+查看这个新建立的：
+
+```bash
+curl 'localhost:9200/customer/external/1roCOX0BagJe-b9xXiyI?pretty'
+```
+
+![image-20211120002539523](C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120002539523.png)
+
+## 5.2 更新文档
+
+除了可以索引、替换文档之外，我们也可以更新一个文档。但ES实际上是先删除旧文档，然后再索引更新的新文档。
+
+### 指定id把该文档的某个字段改了
+
+下面的例子展示了怎样将ID为1的文档的name字段改成“Jane Doe”：
+
+```bash
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external/1/_update?pretty' -d '
+{
+  "doc": { "name": "Jane Doe" }
+}'
+curl 'localhost:9200/customer/external/1?pretty'
+```
+
+### 指定id给该文档加上一个字段
+
+下面的例子展示了怎样将ID为1的文档的name字段改成“Jane Doe”的同时，给它加上age字段：
+
+```bash
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external/1/_update?pretty' -d '
+{
+  "doc": { "name": "Jane Doe", "age": 20 }
+}'
+curl 'localhost:9200/customer/external/1?pretty'
+```
+
+### 指定id用脚本对该文档的某个字段进行操作
+
+更新也可以通过使用简单的脚本来进行。这个例子使用一个脚本将age加5：
+
+```bash
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external/1/_update?pretty' -d '
+{
+  "script" : "ctx._source.age += 5"
+}'
+curl 'localhost:9200/customer/external/1?pretty'
+```
+
+其中`ctx._source`指向当前被更新的文档。
+
+## 5.3 删除文档
+
+### 指定id删除文档
+
+删除文档是非常直观的。以下的例子展示了怎样删除ID为2的文档：
+
+```shell
+curl 'localhost:9200/customer/external/2?pretty'
+curl -XDELETE 'localhost:9200/customer/external/2?pretty'
+curl 'localhost:9200/customer/external/2?pretty'
+```
+
+### 删除符合某个条件的所有文档
+
+也能够一次删除符合某个查询条件的多个文档。以下的例子展示了如何删除`name`字段中包含`Jane`的所有的客户：
+
+```shell
+curl -H "Content-Type: application/json" -XDELETE 'localhost:9200/customer/external/_query?pretty' -d '
+{
+  "query": { "match": { "name": "Jane" } }
+}'
+```
+
+注意，以上的URI变成了`/_query`，以此来表明这是一个==查询删除==API，删除满足请求体中的查询条件的索引。我们仍然使用DELETE动词。
+
+## 5.3 批处理
+
+ES也提供了操作的批量处理功能，它通过使用_bulk API实现。
+
+作为一个快速的例子，以下调用在一次bulk操作中索引了两个文档（ID 1 - John Doe and ID 2 - Jane Doe） :
+
+```shell
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external/_bulk?pretty' -d '
+{"index":{"_id":"1"}}
+{"name": "John Doe" }
+{"index":{"_id":"2"}}
+{"name": "Jane Doe" }
+'
+```
+
+以下例子在一个bulk操作中
+
+- 更新第一个文档
+- 删除第二个文档（ID为2）
+
+```shell
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/customer/external/_bulk?pretty' -d '
+{"update":{"_id":"1"}}
+{"doc": { "name": "John Doe becomes Jane Doe" } }
+{"delete":{"_id":"2"}}
+'
+```
+
+注意上面的delete动作，由于**删除动作只需要被删除文档的ID，所以并没有对应的源文档**。
+
+bulk API按序执行，如果其中一个失败了，它将会继续处理后面的。返回时，API它将提供每个动作的状态（按序），所以你能够看到某个动作成功与否。
+
+# 6 操作数据
+
+## 6.1 样本数据集？
+
+现在我们对于基本的东西已经有了一些认识，现在让我们尝试使用一些更加贴近现实的数据集。我准备了一些假想的客户银行账户信息的JSON文档样本。文档具有以下的模式（schema）：
+
+```
+{
+    "account_number": 0,
+    "balance": 16623,
+    "firstname": "Bradshaw",
+    "lastname": "Mckenzie",
+    "age": 29,
+    "gender": "F",
+    "address": "244 Columbus Place",
+    "employer": "Euron",
+    "email": "[email protected]",
+    "city": "Hobucken",
+    "state": "CO"
+}
+```
+
+可以通过[www.json-generator.com/](http://www.json-generator.com/)自动生成这些数据。
+
+## 6.2 载入样本数据？
+
+你可以在[这里](https://github.com/bly2k/files/blob/master/accounts.zip?raw=true)下载样本数据集。将其解压到当前目录下并加载到我们的集群里：
+
+```shell
+curl -XPOST 'localhost:9200/bank/account/_bulk?pretty' --data-binary @accounts.json
+curl 'localhost:9200/_cat/indices?v'
+```
+
+响应是：
+
+```shell
+curl 'localhost:9200/_cat/indices?v'
+health index pri rep docs.count docs.deleted store.size pri.store.size
+yellow bank    5   1       1000            0    424.4kb        424.4kb
+```
+
+这意味着我们成功批量索引了1000个文档到银行索引中（在account类型下）。
+
+## 6.3 搜索API
+
+两种基本的方式来运行搜索：
+
+- 在REST请求的URI中发送搜索参数，
+- 将搜索参数发送到REST请求体中。
+
+==请求体==方法的表达能力更好，并且你可以使用更加可读的JSON格式来定义搜索。我们将尝试使用一次请求URI作为例子，但是教程的后面部分，我们将仅仅使用请求体方法。
+
+### URI
+
+搜索的 REST API 可以通过_search终点(endpoint)来访问。下面这个例子返回bank索引中的所有的文档：
+
+```shell
+curl 'localhost:9200/bank/_search?q=*&pretty'
+```
+
+我们仔细研究一下这个查询调用。
+
+- 我们在bank索引中搜索（ `_search`终点）
+- `q=*`参数指示匹配这个索引中所有的文档。
+
+以下是响应（部分列出）：
+
+```shell
+curl 'localhost:9200/bank/_search?q=*&pretty'
+{...
+```
+
+对于这个响应，我们可以看到如下的部分：
+
+- `took`：Elasticsearch 执行这个搜索的耗时，以毫秒为单位
+
+- `timed_out`：指明这个搜索是否超时
+
+  <img src="C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120023235209.png" alt="image-20211120023235209" style="zoom:67%;" />
+
+- `_shards`：指出多少个分片被搜索了，同时也指出了成功/失败的被搜索的shards 的数量
+
+  <img src="C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120023301168.png" alt="image-20211120023301168" style="zoom:67%;" />
+
+- `hits`：搜索结果
+
+- `hits.total`：匹配查询条件的文档的总数目
+
+  <img src="C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120023334832.png" alt="image-20211120023334832" style="zoom:67%;" />
+
+- `hits.hits`：真正的搜索结果数组（默认是前10个文档）
+
+  <img src="C:/Users/16834/Desktop/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2%E5%AE%9E%E9%AA%8C/3%20%E5%AE%9E%E9%AA%8C3%2011.21/image-20211120023356889.png" alt="image-20211120023356889" style="zoom:67%;" />
+
+- `_score` 和 `max_score`：现在先忽略这些字段
+
+### 请求体
+
+使用请求体方法的等价搜索是：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_all": {} }
+}'
+```
+
+不是向URI中传递q=*，是在_search API的请求体中POST了一个JSON格式的请求体。
+
+## 6.4 介绍查询语言
+
+ES提供一种JSON风格的特定领域语言==DSL==，利用它你可以执行查询。
+
+```BASH
+{
+  "query": { "match_all": {} }
+}
+```
+
+- query部分告诉查询的定义，
+- match_all部分就是我们想要运行的查询的类型（简单地查询一个指定索引下的所有的文档。
+
+下面做了一次`match_all`查询并只返回第一个文档：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_all": {} },
+  "size": 1
+}'
+```
+
+- `size`表示返回几个，默认是10。
+
+做了一次`match_all`查询并且返回第11到第20个文档：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_all": {} },
+  "from": 10,
+  "size": 10
+}'
+```
+
+- from 参数指明从哪个文档开始，默认就是0
+
+  对于搜索结果分页来说非常有帮助。
+
+做了一次`match_all`查询并且以账户余额降序排序，最后返前十个文档：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_all": {} },
+  "sort": { "balance": { "order": "desc" } }
+}'
+```
+
+## 6.5 执行搜索
+
+默认情况下，是返回完整的JSON文档的。这可以通过`source`来引用（搜索`hits`中的`_sourcei`字段）。如果我们不想返回完整的源文档，我们可以指定返回的几个字段。
+
+### 只返回指定字段
+
+下面这个例子说明了从搜索中只返回两个字段`account_number`和`balance`（当然，这两个字段都是指`_source`中的字段），以下是具体的搜索：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_all": {} },
+  "_source": ["account_number", "balance"]
+}'
+```
+
+注意到上面的例子简化了`_source`字段，它仍将会返回一个叫做`_source`的字段，但是仅仅包含`account_number`和`balance`两个字段。
+
+> 有些像SQL的SELECT FROM。
+
+### match查询
+
+`match`查询，这可以看成是一个简单的字段搜索查询（比如对某个或某些特定字段的搜索）
+
+下面这个例子返回账户编号为 20 的文档：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match": { "account_number": 20 } }
+}'
+```
+
+下面这个例子返回地址中包含词语(term)“mill”的所有账户：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match": { "address": "mill" } }
+}'
+```
+
+下面这个例子返回地址中包含词语“mill” 或者“lane” 的账户：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match": { "address": "mill lane" } }
+}'
+```
+
+下面这个例子是`match`的变体（`match_phrase`），它会去匹配短语“mill lane”：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": { "match_phrase": { "address": "mill lane" } }
+}'
+```
+
+### 布尔查询 `&&`
+
+布尔查询允许我们利用布尔逻辑将较小的查询组合成较大的查询。
+
+现在这个例子组合了两个`match`查询，这个组合查询返回包含“mill” 和“lane” 的所有的账户
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}'
+```
+
+在上面的例子中，`bool must`语句指明了，对于一个文档，所有的查询都必须为真，这个文档才能够匹配成功。
+
+### 布尔查询 `||`
+
+相反的， 下面的例子组合了两个`match`查询，它返回的是地址中包含“mill” 或者“lane”的所有的账户:
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}'
+```
+
+在上面的例子中`bool should`语句指明，对于一个文档，查询列表中，只要有一个查询匹配，那么这个文档就被看成是匹配的。
+
+### 布尔查询 `!`
+
+现在这个例子组合了两个查询，它返回地址中既不包含“mill”，同时也不包含“lane”的所有的账户信息：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": {
+    "bool": {
+      "must_not": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}'
+```
+
+在上面的例子中，`bool must_not`语句指明，对于一个文档，查询列表中的的所有查询都必须都不为真，这个文档才被认为是匹配的。
+
+### 复合
+
+我们可以在一个bool查询里一起使用must、should、must_not。 此外，我们可以将bool查询放到这样的bool语句中来模拟复杂的、多层级的布尔逻辑。
+
+下面这个例子返回40岁以上并且不生活在ID（aho）的人的账户：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "age": "40" } }
+      ],
+      "must_not": [
+        { "match": { "state": "ID" } }
+      ]
+    }
+  }
+}'
+```
+
+## 6.6 执行过滤器
+
+- 在前面的章节中，我们跳过了文档得分的细节（搜索结果中的`_score`字段）。这个得分表示匹配程度。==得分越高，文档越相关==，得分越低文档的相关度越低。
+
+  EA中的所有的查询都会触发相关度得分的计算。
+
+- 对于那些我们不需要相关度得分的场景下，ES以**过滤器**的形式提供了另一种查询功能。过滤器类似于查询，但是它们有非常快的执行速度，因为不用计算score而且过滤器可以被缓存到内存中（近期查过的可以直接从缓存中拿）
+
+为了理解过滤器，我们先来介绍“被过滤” 的查询，这使得你可以将一个查询（如`match_all`,`match`,`bool`等）和一个过滤器结合起来。作为一个例子，我们介绍一下范围过滤器，它允许我们通过一个区间的值来过滤文档。这通常被用在数字和日期的过滤上。
+
+这个例子使用一个被过滤的查询，其返回值是存款在20000到30000之间（闭区间)的所有账户。换句话说，我们想要找到存款大于等于20000并且小于等于30000的账户。
+
+```scala
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "query": {
+    "filtered": {
+      "query": { "match_all": {} },
+      "filter": {
+        "range": {
+          "balance": {
+            "gte": 20000,
+            "lte": 30000
+          }
+        }
+      }
+    }
+  }
+}'
+```
+
+分析上面的例子，被过滤的查询包含一个`match_all`查询（查询部分）和一个过滤器（`filter`部分）。
+
+- 我们可以在查询部分中放入其他查询
+- 在`filter`部分放入其它过滤器。
+
+在上面的应用场景中，由于所有的在这个范围之内的文档都是平等的（或者说相关度都是一样的）， 没有一个文档比另一个文档更相关，所以这个时候使用范围过滤器就非常合适了
+
+> 如果你有SQL背景，查询和过滤器在概念上类似于`SELECT WHERE`语句，一般情况下过滤器比查询用得更多。
+
+除了`match_all`, `match`, `bool`,`filtered`和`range`查询，还有很多其它类型的查询/过滤器。
+
+## 6.7 执行聚合
+
+聚合提供了分组并统计数据的能力。理解聚合的最简单的方式是将其粗略地等同为SQL的`GROUP B`Y和SQL聚合函数。
+
+在ES中，你可以在一个响应中同时返回命中的数据和聚合结果。你可以使用简单的API同时运行查询和多个聚合并一次返回，这避免了来回的网络通信，是非常强大和高效的。
+
+作为开始的一个例子，我们按照state分组，并按照州名的计数倒序排序：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state"
+      }
+    }
+  }
+}'
+```
+
+在SQL中，上面的聚合在概念上类似于：
+
+```sql
+SELECT COUNT(*) from bank GROUP BY state ORDER BY COUNT(*) DESC
+```
+
+响应（其中一部分）是：
+
+```json
+ "hits" : {
+    "total" : 1000,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "group_by_state" : {
+      "buckets" : [ {
+        "key" : "al",
+        "doc_count" : 21
+      }, {
+        "key" : "tx",
+        "doc_count" : 17
+      }, {
+        "key" : "id",
+        "doc_count" : 15
+      }, {
+        "key" : "ma",
+        "doc_count" : 15
+      }, {
+        "key" : "md",
+        "doc_count" : 15
+      }, {
+        "key" : "pa",
+        "doc_count" : 15
+      }, {
+        "key" : "dc",
+        "doc_count" : 14
+      }, {
+        "key" : "me",
+        "doc_count" : 14
+      }, {
+        "key" : "mo",
+        "doc_count" : 14
+      }, {
+        "key" : "nd",
+        "doc_count" : 14
+      } ]
+    }
+  }
+}
+```
+
+我们可以看到AL（abama）有21个账户，TX有17 个账户，ID（aho）有15个账户，依此类推。
+
+注意我们将`size`设置成 0，这样我们就可以只看到聚合结果了，而不会显示命中的结果。
+
+在先前聚合的基础上，现在这个例子计算了每个州的账户的平均存款（还是按照账户数量倒序排序的前10个州）：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state"
+      },
+      "aggs": {
+        "average_balance": {
+          "avg": {
+            "field": "balance"
+          }
+        }
+      }
+    }
+  }
+}'
+```
+
+注意， 我们把`average_balance`聚合嵌套在了`group_by_state`聚合之中。这是所有聚合的一个常用模式。你可以在任意的聚合之中嵌套聚合，这样就可以从你的数据中抽取出想要的结果。（==OK我开始不会了==）
+
+在前面的聚合的基础上，现在让我们按照平均余额进行排序：
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state",
+        "order": {
+          "average_balance": "desc"
+        }
+      },
+      "aggs": {
+        "average_balance": {
+          "avg": {
+            "field": "balance"
+          }
+        }
+      }
+    }
+  }
+}'
+```
+
+下面的例子显示了如何使用年龄段（20-29，30-39，40-49）分组，然后再用性别分组，最后为每一个年龄段的每组性别计算平均账户余额。
+
+```shell
+curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+{
+  "size": 0,
+  "aggs": {
+    "group_by_age": {
+      "range": {
+        "field": "age",
+        "ranges": [
+          {
+            "from": 20,
+            "to": 30
+          },
+          {
+            "from": 30,
+            "to": 40
+          },
+          {
+            "from": 40,
+            "to": 50
+          }
+        ]
+      },
+      "aggs": {
+        "group_by_gender": {
+          "terms": {
+            "field": "gender"
+          },
+          "aggs": {
+            "average_balance": {
+              "avg": {
+                "field": "balance"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+```
+
+# 7 搜索API
+
+搜索API允许开发者执行搜索查询，返回匹配查询的搜索结果。这既可以通过查询字符串也可以通过查询体实现。
+
+## 7.1 多索引多类型
+
+所有的搜索API都可以跨多个类型使用，也可以通过多索引语法跨索引使用。例如，我们可以搜索twitter索引的跨类型的所有文档。
+
+```shell
+$ curl -XGET 'http://localhost:9200/twitter/_search?q=user:kimchy'
+```
+
+我们也可以带上特定的类型:
+
+```shell
+$ curl -XGET 'http://localhost:9200/twitter/tweet,user/_search?q=user:kimchy'
+```
+
+我们也可以搜索跨多个索引的所有文档
+
+```shell
+$ curl -XGET 'http://localhost:9200/kimchy,elasticsearch/tweet/_search?q=tag:wow'
+```
+
+或者我们也可以用`_all`占位符表示搜索所有可用的索引的所有推特。
+
+```shell
+$ curl -XGET 'http://localhost:9200/_all/tweet/_search?q=tag:wow'
+```
+
+或者搜索跨所有可用索引和所有可用类型的推特
+
+```shell
+$ curl -XGET 'http://localhost:9200/_search?q=tag:wow'
+```
+

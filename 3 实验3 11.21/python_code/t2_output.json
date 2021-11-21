@@ -1,0 +1,328 @@
+{
+    "took":7,
+    "timed_out":false,
+    "_shards":{
+        "total":1,
+        "successful":1,
+        "skipped":0,
+        "failed":0
+    },
+    "hits":{
+        "total":{
+            "value":10000,
+            "relation":"gte"
+        },
+        "max_score":1.0,
+        "hits":[
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"1",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<29790972.1075855665306.JavaMail.evans@thyme>",
+                    "Date":"Wed, 13 Dec 2000 18:41:00 -0800 (PST)",
+                    "From":"1.11913372.-2@multexinvestornetwork.com",
+                    "To":"pallen@enron.com",
+                    "Subject":"December 14, 2000 - Bear Stearns' predictions for telecom in Latin America",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Multex Investor <1.11913372.-2@multexinvestornetwork.com>",
+                    "X-To":"<pallen@enron.com>",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"In today's Daily Update you'll find free reports on\nAmerica Online (AOL), Divine Interventures (DVIN),\nand 3M (MMM); reports on the broadband space, Latin\nAmerican telecom, and more.\n\nFor free research, editor's picks,
+and more come to the Daily Investor:\nhttp://www.multexinvestor.com/AF004627/magazinecover.asp?promo=unl&d=20001214#\ninvestor\n\n***************************************************************\nYou are receiving this mail because you have registered for\nMultex Investor. To unsubscribe, see bottom of this message.\n***************************************************************\n\n======================== Sponsored by =========================\nWould you own just the energy stocks in the S&P 500?\nSelect Sector SPDRs divides the S&P 500 into nine sector index funds.\nPick and choose just the pieces of the S&P 500 you like best.\nhttp://www.spdrindex.com\n===============================================================\n\nFeatured in today's edition of the Daily Update:\n\n1. SPECIAL ANNOUNCEMENT: Treat yourself to Multex Investor's NEW Personal\nFinance Channel to take advantage of top-notch content and tools  FREE.\n\n2. DAILY FREE SPONSOR REPORT: Robertson Stephens maintains a \"buy\" rating\non Divine Interventures (DVIN).\n\n3. FREE RESEARCH REPORT: Jefferies & Co. rates America Online (AOL) a\n\"buy,\" saying projected growth remains in place.\n\n4. ASK THE ANALYST: Morgan Stanley Dean Witter's Lew Smith in the Analyst\nCorner\n\n5. HOT REPORT: Oscar Gruss & Son's most recent issue of its Broadband\nBrief reports the latest developments in the broadband space.\n\n6. EDITOR'S PICK: Bear Stearns measures the impact of broadband and the\nInternet on telecom in Latin America.\n\n7. FREE STOCK SNAPSHOT: The current analysts' consensus rates 3M (MMM), a\n\"buy/hold.\"\n\n8. JOIN THE MARKETBUZZ: where top financial industry professionals answer\nyour questions and offer insights every market day from noon 'til 2:00\np.m. ET.\n\n9. TRANSCRIPTS FROM WALL STREET: Ash Rajan, senior vice president and\nmarket analyst with Prudential Securities, answers questions about the\nmarket.\n\n======================== Sponsored by =========================\nProfit From AAII's \"Cash Rich\" Stock Screen - 46% YTD Return\n\nWith so much market volatility, how did AAII's \"Cash Rich\"\nStock Screen achieve such stellar returns?  Find the answer by\ntaking a free trial membership from the American Association\nof Individual Investors and using our FREE Stock Screen service at:\nhttp://subs.aaii.com/c/go/XAAI/MTEX1B-aaiitU1?s=S900\n===============================================================\n\n1. NEW ON MULTEX INVESTOR\nTake charge of your personal finances\n\nDo you have endless hours of free time to keep your financial house in\norder? We didn't think so. That's why you need to treat yourself to Multex\nInvestor's NEW Personal Finance Channel to take advantage of top-notch\ncontent and tools  FREE.\nClick here for more information.\nhttp://www.multexpf.com?mktg=sgpftx4&promo=unl&t=10&d=20001214\n\n\n2. DAILY FREE SPONSOR REPORT\nDivine Interventures (DVIN)\n\nRobertson Stephens maintains a \"buy\" rating on Divine Interventures, an\nincubator focused on infrastructure services and business-to-business\n(B2B) exchanges. Register for Robertson Stephens' free-research trial to\naccess this report.\nClick here.\nhttp://www.multexinvestor.com/Download.asp?docid=5018549&sid=9&promo=unl&t=12&\nd=20001214\n\n\n3. FREE RESEARCH REPORT\nHold 'er steady -- America Online (AOL)\n\nAOL's projected growth and proposed merger with Time Warner (TWX)
+both\nremain in place, says Jefferies & Co., which maintains a \"buy\" rating on\nAOL. In the report, which is free for a limited
+time, analysts are\nconfident the deal will close soon.\nClick here.\nhttp://www.multexinvestor.com/AF004627/magazinecover.asp?promo=unl&t=11&d=2000\n1214\n\n\n4. TODAY IN THE ANALYST CORNER\nFollowing market trends\n\nMorgan Stanley Dean Witter's Lew Smith sees strong underlying trends\nguiding future market performance. What trends does he point to, and what\nstocks and sectors does he see benefiting from his premise?\n\nHere is your opportunity to gain free access to Morgan Stanley's research.\nSimply register and submit a question below. You will then have a free\ntrial membership to this top Wall Street firms' research!  Lew Smith will\nbe in the Analyst Corner only until 5 p.m. ET Thurs., Dec. 14, so be sure\nto ask your question now.\nAsk the analyst.\nhttp://www.multexinvestor.com/ACHome.asp?promo=unl&t=1&d=20001214\n\n\n5. WHAT'S HOT? RESEARCH REPORTS FROM MULTEX INVESTOR'S HOT LIST\nBreaking the bottleneck -- An update on the broadband space\n\nOscar Gruss & Son's most recent issue of its Broadband Brief reports the\nlatest developments in the broadband space, with coverage of Adaptive\nBroadband (ADAP), Broadcom (BRCM), Efficient Networks (EFNT), and others\n(report for purchase - $25).\nClick here.\nhttp://www.multexinvestor.com/Download.asp?docid=5149041&promo=unl&t=4&d=20001\n214\n\n======================== Sponsored by =========================\nGet Red Herring insight into hot IPOs, investing strategies,\nstocks to watch, future technologies, and more. FREE\nE-newsletters from Redherring.com provide more answers,\nanalysis and opinion to help you make more strategic\ninvesting decisions. Subscribe today\nhttp://www.redherring.com/jump/om/i/multex/email2/subscribe/47.html\n===============================================================\n\n6. EDITOR'S PICK: CURRENT RESEARCH FROM THE CUTTING EDGE\nQue pasa? -- Predicting telecom's future in Latin America\n\nBear Stearns measures the impact of broadband and the Internet on telecom\nin Latin America, saying incumbent local-exchange carriers (ILECs) are\nideally positioned to benefit
+from the growth of Internet and data\nservices (report for purchase - $150).\nClick here.\nhttp://www.multexinvestor.com/Download.asp?docid=5140995&promo=unl&t=8&d=20001\n214\n\n\n7. FREE STOCK SNAPSHOT\n3M (MMM)\n\nThe current analysts' consensus rates 3M, a
+\"buy/hold.\" Analysts expect\nthe industrial product manufacturer to earn $4.76 per share in 2000 and\n$5.26 per share in 2001.\nClick here.\nhttp://www.multexinvestor.com/Download.asp?docid=1346414&promo=unl&t=3&d=20001\n214\n\n\n8. JOIN THE MARKETBUZZ!\nCheck out SageOnline\n\nwhere top financial industry professionals answer your questions and offer\ninsights every market day from noon 'til 2:00 p.m. ET.\nClick here.\nhttp://multexinvestor.sageonline.com/page2.asp?id=9512&ps=1&s=2&mktg=evn&promo\n=unl&t=24&d=20001214\n\n\n9. TRANSCRIPTS FROM WALL STREET'S GURUS\nPrudential Securities' Ash Rajan\n\nIn this SageOnline transcript from a chat that took place earlier this\nweek, Ash Rajan, senior vice president and market analyst with Prudential\nSecurities, answers questions about tech, retail, finance, and the outlook\nfor the general market.\nClick here.\nhttp://multexinvestor.sageonline.com/transcript.asp?id=10403&ps=1&s=8&mktg=trn\n&promo=unl&t=13&d=20001214\n\n===================================================================\nPlease send your questions and comments to mailto:investor.help@multex.com\n\nIf you'd like to learn more about Multex Investor, please visit:\nhttp://www.multexinvestor.com/welcome.asp\n\nIf you can't remember your password and/or your user name, click here:\nhttp://www.multexinvestor.com/lostinfo.asp\n\nIf you want to update your email address, please click on the url below:\nhttp://www.multexinvestor.com/edituinfo.asp\n===================================================================\nTo remove yourself from the mailing list for the Daily Update, please\nREPLY to THIS email message with the word UNSUBSCRIBE in the subject\nline. To remove yourself from all Multex Investor mailings, including\nthe Daily Update and The Internet Analyst, please respond with the\nwords NO EMAIL in the subject line.\n\nYou may also unsubscribe on the account update page at:\nhttp://www.multexinvestor.com/edituinfo.asp\n===================================================================\nPlease email advertising inquiries to us at mailto:advertise@multex.com.\n\nFor information on becoming an affiliate click here: \nhttp://www.multexinvestor.com/Affiliates/home.asp?promo=unl\n\nBe sure to check out one of our other newsletters, The Internet Analyst by\nMultex.com. The Internet Analyst informs, educates, and entertains you with\nusable investment data, ideas, experts, and info about the Internet industry.\nTo see this week's issue, click here: http://www.theinternetanalyst.com\n\nIf you are not 100% satisfied with a purchase you make on Multex\nInvestor, we will refund your money."
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"2",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<21975671.1075855665520.JavaMail.evans@thyme>",
+                    "Date":"Wed, 13 Dec 2000 08:35:00 -0800 (PST)",
+                    "From":"messenger@ecm.bloomberg.com",
+                    "Subject":"Bloomberg Power Lines Report",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=ANSI_X3.4-1968",
+                    "Content-Transfer-Encoding":"quoted-printable",
+                    "X-From":"\"Bloomberg.com\" <messenger@ecm.bloomberg.com>",
+                    "X-To":"(undisclosed-recipients)",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"Here is today's copy of Bloomberg Power Lines. Adobe Acrobat Reader is\nrequired to view the attached pdf file. You can download a free version\nof Acrobat Reader at\n   http://www.adobe.com/products/acrobat/readstep.html\n\nIf you have trouble downloading the attached file it is also located at\n   http://www.bloomberg.com/energy/daily.pdf\n\nDon't forget to check out the Bloomberg PowerMatch West Coast indices, the\nmost accurate indices anywhere. Index values are calculated from actual tra=\ndes\nand can be audited by all PowerMatch customers.\n\nOur aim is to bring you the most timely electricity market coverage in the\nindustry and we welcome your feedback on how we can improve the product=20\nfurther.\n\nBloomberg Energy Department\n\n12/13 Bloomberg Daily Power Report\n\nTable\n\n                      Bloomberg U.S. Regional Electricity Prices\n      ($/MWh for 25-50 MWh pre-scheduled packages, excluding transmission=\n=20\ncosts)\n\n                            On-Peak\nWest Coast
+                 Index       Change       Low         High\n Mid-Columbia                362.50     -312.50      350.00      375.00\n Ca-Or Border                452.50     -172.50      430.00      475.00\n NP15                        387.50     -206.25      325.00      450.00\n SP15                        307.50     -233.50      300.00      315.00\n Ault Colorado               350.00
+  -125.00      300.00      315.00\n Mead                        335.00     -187.50      320.00      350.00\n Palo Verde
+       336.25     -136.53      320.00      350.00\n Four Corners                330.00     -182.50      325.00      335.00\n\nMid-Continent\n ECAR                        69.20       -22.71      63.00       75.86\n  East                       75.00       -13.00      74.00       76.00\n  AEP                        67.00       -25.50      59.00       75.00\n  West                       68.00       -24.50      60.00       75.00\n  Central                    67.90       -23.19      59.00       75.00\n  Cinergy
+          67.90       -23.19      59.00       75.00\n  South                      70.25       -23.95      65.00       80.00\n  North                      68.33       -25.67      65.00       75.00\n Main                        72.56       -19.78      62.50
+  87.50\n  Com-Ed                     68.70       -21.37      60.00       75.00\n  Lower                      76.43       -18.17
+    65.00       100.00\n MAPP                        99.92       -40.91      75.00       125.00\n  North                      99.00       -37.67      75.00       125.00\n  Lower                      100.83      -44.17      75.00       125.00\n\nGulf Coast\n SPP                         85.00       -18.50      80.00       92.50\n  Northern                   88.00       -39.00      78.00
+    100.00\n ERCOT                       55.00       -40.00      50.00       60.00\n SERC                        77.04       -6.66       72.34       81.98\n  Va Power                   66.00       +25.00      60.00       70.00\n  VACAR                      67.50       -9.50       62.00       70.00\n  Into TVA                   70.25       -23.95      65.00       80.00\n  Out of TVA
+           76.02       -24.61      69.41       84.87\n  Entergy                    80.00       -30.80      75.00       85.00\n  Southern                   90.00       +10.00      90.00       90.00\n  Fla/Ga Border              85.50       +4.50       81.00
+   90.00\n FRCC                        110.00      +65.00      110.00      110.00\n\nEast Coast\n NEPOOL                      90.50       +0.50       90.50       90.50\n New York Zone J             91.00       +7.50       90.00       92.00\n New York Zone G
+          74.50       +1.00       73.50       75.50\n New York Zone A             68.83       +6.13       65.50       73.50\n PJM
+                        67.08       -12.75      62.00       76.00\n  East                       67.08       -12.75      62.00
+  76.00\n  West                       67.08       -12.75      62.00       76.00\n  Seller's Choice            66.58       -12.75
+    61.50       75.50\nEnd Table\n\n\nWestern Power Prices Fall With Warmer Weather, Natural Gas Loss\n\n     Los Angeles, Dec. 13 (Bloomberg Energy) -- U.S. Western spot\npower prices declined today from a combination of warmer weather\nacross the region and
+declining natural gas prices.\n     According to Belton, Missouri-based Weather Derivatives Inc.,\ntemperatures in the Pacific Northwest will average about 2 degrees\nFahrenheit above normal for the next seven days. In the Southwest\ntemperatures will be about 3.5 degree above normal.\n     At the California-Oregon Border, heavy load power fell\n$172.00 from yesterday to $430.00-$475.00.\n     \"What happened to all of this bitter cold weather we were\nsupposed to have,'' said one Northwest power marketer. Since the\nweather is not as cold as expected prices are drastically lower.\"\n     Temperatures in Los Angeles today will peak at 66 degrees,\nand are expected to rise to 74 degrees this weekend.\n     Natural gas to be delivered to the California Oregon from the\nEl Paso Pipeline traded between $20-$21, down $3 from yesterday.\n     \"Gas prices are declining causing western daily power prices\nto fall,'' said one Northwest power trader.\n     At the NP-15 delivery point heavy load power decreased\n$206.25 from yesterday to $325.00-$450.00. Light load energy fell\nto $200.00-$350.00, falling $175.00 from yesterday.\n     PSC of New Mexico's 498-megawatt San Juan Unit 4 coal plant\nwas shut down this morning for a tube leak. The unit is scheduled\nto restart this weekend.\n
+  At the Four Corners located in New Mexico, power traded at\n$325.00-$335.00 plunging $182.50 from yesterday.\n\n-Robert Scalabrino\n\n\nPJM Spot Power Prices Dip With Weather, Falling Natural Gas\n\n     Philadelphia, Dec. 13 (Bloomberg Energy) -- Peak next-day\npower prices declined at the western hub of the Pennsylvania-New\nJersey-Maryland Interconnection amid warmer weather forecasts and\nfalling natural gas prices, traders said.\n     The Bloomberg index price for peak Thursday power at western\nPJM declined an average of $12.75 a megawatt-hour, with trades\nranging from $62.00-$76.00.\n     Lexington, Massachusetts-based Weather Services Corp.\nforecast tomorrow's high temperature in Philadelphia at 40 degrees\nFahrenheit, up 7 degrees from today's expected high. Temperatures\ncould climb as high as 42 degrees by Friday.\n     \"Most of the day's activity took place in the early part of\nthe morning,\" said one PJM-based trader. \"By options expiration\nthe market had pretty much dried up.\"\n     Traders said that falling natural gas prices were the main\nreason for the decline in spot market prices.\n     Bloomberg figures show that spot natural gas delivered to the\nNew York City Gate declined an average of $1.25 per million\nBritish thermal units to $8.60-$8.90 per million Btu. Since\nMonday, delivered natural gas prices have declined an average of\n$2.44 per million Btu, as revised 6-10 day weather forecasts\nindicated reduced utility load requirements.\n     In New York, prices rose as utilities withheld supplies they\nnormally would have sold, fearing a sudden change in weather\nforecast could force them into high-priced hourly markets.\n     Peak next-day power at the Zone A delivery point sold $6.13\nhigher at a Bloomberg index price of $70.33, amid trades in the\n$67.00-$75.00 range. Power at Zone J sold $7.50 higher at $90.00-\n$92.00.\n     ~\n-Karyn Rispoli\n\n\nMid-Continent Power Prices Drop on Revised Forecast, Gas Prices\n\n     Cincinnati, Dec. 13 (Bloomberg Energy) -- U.S. Mid-Continent\nnext-day peak power prices plunged as forecasts were revised\nwarmer and natural gas values continued to decline, traders said.\n     The Bloomberg index price
+for peak Thursday power on the\nCincinnati-based Cinergy Corp. transmission system dropped $23.19\nto $67.90 a megawatt-hour, with trades ranging from $75.00 as the\nmarket opened down to $59.00 after options expired.\n     In Mid-America Interconnected Network trading, peak power on\nthe Chicago-based Commonwealth Edison Co. grid sold $21.37 lower\non average at $60.00-$75.00, while power in lower MAIN sold $18.17\nlower at $65.00-$100.00.\n     Belton, Missouri-based Weather Derivatives Inc. predicted\nhigh temperatures would average 2 degrees Fahrenheit above normal\nin Chicago and at normal levels in Cincinnati over the next seven\ndays,
+up from 6 and 4 degrees below normal Monday, respectively.\n     Traders said falling spot natural gas values also pulled\nprices
+down. Natural gas prices were a large factor in recent\nelectricity market surges because of a heavy reliance on gas-fired\ngeneration to meet increased weather-related demand.\n     Spot natural gas at the Cincinnati city gate sold an average\nof 95 cents less than yesterday at $7.80-$8.30 per million British\nthermal units. Spot gas at the Chicago city gate sold an average\nof 80 cents less at $7.65-$8.15 per million Btu.\n     \"The weather's moderating and gas is down, so you've got\npeople coming to their senses,\" one trader said. \"These are much\nmore realistic prices.\"\n     Traders said prices could decline further tomorrow if the\noutlook for weather continues to be mild. Peak Cinergy power for\ndelivery from Dec. 18-22 was offered at $60.00, down from $90.00\nyesterday.\n     Mid-Continent Area Power Pool peak spot power prices plunged\nwith warmer weather forecasts and increased available transmission\ncapacity, selling $37.67 less in northern MAPP and $44.17 less in\nsouthern MAPP at $75.00-$125.00.\n     \"What's happening is the people who don't have firm\ntransmission are getting into the market early and buying at those\nhigh prices
+since they have no choice,\" one MAPP trader said.\n     \"Then you've got some people who were lucky enough to get a\nfirm path who waited until later in the morning when ComEd prices\nfell off,\" he said, \"and bought from them at those lower prices,\ncausing the huge gap between the day's high and low trade.\"\n\n-Ken Fahnestock\n\n\nSoutheast U.S. Electricity Prices Slump After Mild
+Forecast\n\n     Atlanta, Georgia, Dec. 13 (Bloomberg Energy) -- Southeast\nU.S. peak spot power prices slumped today after warmer weather was\nforecast for the region this week, traders said.\n     Traders said Southeast utility demand has been reduced since\nmany large population centers like Atlanta will see temperatures\nclimb into the mid-50s Fahrenheit later this week.\n     \"There was nothing going on in Florida today,\" said one\nsouthern energy trader. \"Everything was going to markets in the\nnorth.\"\n
+    Traders said supply was being routed from Florida into\nmarkets on the Entergy Corp. and the Tennessee Valley Authority\ngrid
+in the mid-$70s a megawatt-hour.\n     \"Prices into TVA started in the $80s and $90s and crumbled as\nforecasts came out,\" said
+on Entergy power trader. \"Prices,\ndeclined to $60 and less.\"\n     The Bloomberg into TVA index price fell an average of $23.95\nto $70.25 amid trades in the $65.00-$80.00 range. Off-peak trades\nwere noted at $32.00, several dollars higher than recent\nestimates.\n     Southeast power traders said revised 6-10 day weather\nforecasts and lower temperatures for the balance of this week\ncaused prices to decline in the region.\n     In the Southwest Power Pool, traders said warmer weather was\nthe main culprit behind lower prices.\n     \"The cold weather's backing off,\" said one SPP utility\ntrader. \"It was minus 35 degrees with the wind
+chill yesterday and\ntoday it's about 9 degrees with the wind chill.  Yesterday, it was\nbitter cold and today it was just plain cold.\"\n     Power sold in northern sections of SPP at $78-$100, though\nthe Bloomberg index sank an average of 39.00 to $88.00. Southern\nSPP traded at $82.00, $2 more than yesterday.\n\n-Brian Whary\n\n\n\nU.K. Day-Ahead Electricity Prices Rise Amid Increased Demand\n\n     London, Dec. 13 (Bloomberg Energy) -- Electricity prices in\nthe U.K. rose today after falling temperatures were
+expected to\nincrease household consumption for space heating, traders said.\n     The day-ahead baseload Pool Purchase Price, calculated by the\nElectricity Pool of England and Wales, rose 1.46 pounds to 20.01\npounds a megawatt-hour.\n     Temperatures across the U.K. were forecast to fall 6 degrees\nto 4 degrees Celsius by the weekend, according to Weather Services\nCorp. in the U.S.\n     Day-ahead Electricity Forward Agreements dealt at 19.7-20.15\npounds a megawatt-hour, 2.1 pounds higher than yesterday.\n
+  December continued to fall amid a combination of position\nclosing prior to its expiry and continued belief that demand will\nnot rise sufficiently to justify high winter prices, traders said.\n     December 2000 baseload EFAs traded at 17.9-18.05 pounds a\nmegawatt-hour, 40 pence below yesterday's last trade.\n     First quarter and its constituent months fell, in line with\nexpectations that mild forecasts into the new year would continue\nto stifle demand, traders said.\n     January 2001 baseload EFAs dealt between 24.6-24.73 pounds a\nmegawatt-hour, falling 17 pence.\n     First quarter 2001 baseload EFAs traded at 21.6-21.7 pounds a\nmegawatt-hour, 10 pence below its previous close.\n     Season structures traded on the U.K. Power Exchange, summer\n2001 baseload trading unchanged at 18.15 pounds a megawatt-hour.\nWinter 2001 baseload dealt 5 pence higher at 21.75 pounds a\nmegawatt-hour.\n     Open positions on many short-term structures will likely\nforce many traders to deal actively on those contracts in the run-\nup to Christmas, traders said. Adding that other structures will\nprobably remain illiquid until the new year, when demand can more\neasily be assessed.\n\n-Nick Livingstone\n\n\nNordic Electricity Prices Climb Following Cold Weather Forecast\n\n     Lysaker, Norway, Dec. 13 (Bloomberg Energy) -- Power prices\non the Nord Pool exchange in Lysaker, Norway, closed higher today\nas colder
+weather forecasts sparked active trade, traders said.\n     Week 51 dealt between 145-152 Norwegian kroner a megawatt-\nhour, 6.62 kroner above yesterday's closing trade on 1,076\nmegawatts of traded volume. Week 52 rose 6.25 kroner, with 446\nmegawatts dealt
+between 134.50-140.25 kroner a megawatt-hour.\n     Supply from hydro-producers was expected to recede after\nforecasts indicated
+reduced precipitation over Scandinavia for\nnext week. These producers typically generate power to prevent\nreservoirs from overflowing.\n     Consumption, currently unseasonably low, was expected to rise\nwith falling temperatures because of increased requirements for\nspace heating.\n     Traded volume on the power exchange increased in active\ntrading on the beginning of typical winter conditions, traders\nsaid.\n     \"The market's been waiting for this day for a long time,\" a\nStockholm-based trader said. \"For too long, people have been\nselling because winter hasn't lived up to expectations. We should\nnow see a noticeable increase in the spot price.\"\n     Temperatures in parts of Scandinavia were forecast to fall\nbelow freezing to minus 5 degrees Celsius, with only limited\nchances for rain during the 5-day outlook, according to Weather\nServices Corp. in the U.S.\n     The day-ahead system average area price fell after demand was\nexpected to remain limited until next week, when forecasts predict\ntemperatures to begin falling.\n     Thursday's system area price fell 1.57 kroner, or 1.22\npercent, to 126.43 kroner a megawatt-hour. Traded volume fell\n4,134 megawatts to 295,414 megawatts.\n     Many dealers anticipate that the spot price will likely rise\nby 10-15 kroner by the start of next week.\n     Winter 1, 2001 forward structures rose in line with shorter-\nterm contracts.\n     Winter 1, 2001 dealt at 136.75-138.5 kroner a megawatt-hour,\n1.9 kroner below yesterday's last trade at 135.25 kroner a\nmegawatt-hour.\n
+    Also, the delayed restart at a Swedish nuclear unit, although\nexpected, will likely allow abundant supply from hydro-producers\nto meet the increased demand, other traders said.\n     Vattenfall's Ringhals 1, an 835-megawatt nuclear reactor,\nwill delay its restart at least until week 52, the company said.\n     Today's rapid increase was likely induced by traders who used\ntoday's
+news to gain momentum for future increases, traders said.\n\n-Nick Livingstone\n-0- (BES) Dec/13/2000 21:04 GMT\n=0F$\n\n\n - daily.pdf"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"3",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<7452188.1075855667684.JavaMail.evans@thyme>",
+                    "Date":"Mon, 9 Oct 2000 07:16:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"keith.holst@enron.com",
+                    "Subject":"Consolidated positions: Issues & To Do list",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"Keith Holst",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"---------------------- Forwarded by Phillip K Allen/HOU/ECT on 10/09/2000 \n02:16 PM ---------------------------\n\n\nRichard Burchfield\n10/06/2000 06:59 AM\nTo: Phillip K Allen/HOU/ECT@ECT\ncc: Beth Perlman/HOU/ECT@ECT \nSubject: Consolidated positions: Issues & To Do list\n\nPhillip,\n Below is the issues & to do list as we go forward with documenting the \nrequirements for consolidated physical/financial positions and transport \ntrade capture. What we need to focus on is the first bullet in Allan's list; \nthe need for a single set of requirements. Although the meeting with Keith, \non Wednesday,  was
+informative the solution of creating a infinitely dynamic \nconsolidated position screen, will be extremely difficult and time \nconsuming.  Throughout the meeting on Wednesday, Keith alluded to the \ninability to get consensus amongst the traders on the presentation of the \nconsolidated position, so the solution was to make it so that a trader can \narrange the position screen to their liking (much like Excel). What needs to \nhappen on Monday from 3 - 5 is a effort to design a desired layout for the \nconsolidated position screen, this is critical. This does not exclude \nbuilding a capability to create a more flexible position presentation for the \nfuture, but in order to create a plan that can be measured we need firm \nrequirements. Also, to reiterate that the goals of this project is a project \nplan on consolidate physical/financial positions and transport trade capture. \nThe other issues that have been raised will be capture as projects on to \nthemselves, and will need to be prioritised as efforts outside of this \nproject.\n\nI have been involved in most of the meetings and the discussions have been \ngood. I believe there has been good communication between the teams, but now \nwe need to have focus on the objectives we set out to solve.\n\nRichard  \n---------------------- Forwarded by Richard Burchfield/HOU/ECT on 10/06/2000 \n08:34 AM ---------------------------\n\n\nAllan Severude\n10/05/2000 06:03 PM\nTo: Richard Burchfield/HOU/ECT@ECT\ncc: Peggy Alix/HOU/ECT@ECT, Russ Severson/HOU/ECT@ECT, Scott \nMills/HOU/ECT@ECT, Kenny Ha/HOU/ECT@ECT \nSubject: Consolidated positions: Issues & To Do list\n\n\nFrom our initial set of meetings with the traders regarding consolidated \npositions, I think we still have the following issues:\nWe don't have a single point of contact from the trading group.  We've had \nthree meetings which brought out very different issues from different \ntraders.  We really need a
+single point of contact to help drive the trader \nrequirements and help come to a consensus regarding the requirements.\nWe're getting hit with a lot of different requests, many of which appear to \nbe outside the scope of position consolidation.\n\nThings left to do:\nI think it may be useful to try to formulate a high level project goal to \nmake it as clear as possible what we're trying to accomplish with this \nproject.  It'll help determine which requests fall under the project scope.\nGo through the list of
+requests to determine which are in scope for this \nproject and which fall out of scope.\nFor those in scope, work to define relative importance (priority) of each and \nwork with traders to define the exact requirements of each.\nDefine the desired lay out of the position manager screen: main view and all \ndrill downs.\nUse the above to formulate a project plan.\n\nThings requested thus far (no particular order):\nInclusion of Sitara physical deals into the TDS position manager and deal \nticker.\nCustomized rows and columns in the position manager (ad hoc rows/columns that \nadd up existing position manager rows/columns).\nNew drill down in the position manager to break out positions by: physical, \ntransport, swaps, options, ...\nAddition of a curve tab to the position manager to show the real-time values \nof all curves on which the desk has a position.\nAbility to split the current position
+grid to allow daily positions to be \nshown directly above monthly positions.  Each grouped column in the top grid \nwould be tied to a grouped column in the bottom grid.\nAbility to properly show curve shift for float-for-float deals; determine the \nappropriate positions to show for each:\nGas Daily for monthly index,\nPhysical gas for Nymex,\nPhysical gas for Inside Ferc,\nPhysical gas for Mid market.\nAbility for TDS to pull valuation results based on a TDS flag instead of \nusing official valuations.\nPosition and P&L aggregation across all gas desks.\nAbility to include the Gas Price book into TDS:\nInclusion of spread options in our systems.  Ability to handle volatility \nskew and correlations.\nAbility to revalue all options incrementally throughout the trading day.  \nApproximate delta changes between valuations using instantaneous gamma or a \ngamma grid.\nValuation of Gas Daily options.\nA new position screen for options (months x strike x delta).  TBD.\nInclusion of positions for exotic options currently managed in spreadsheets.\nAbility to isolate the position change due to changed deals in the position \nmanager.\nAbility to view change
+deal P&L in the TDS deal ticker.  Show new deal terms, \nprior deal terms, and net P&L affect of the change.\nEliminate change deals with no economic impact from the TDS deal ticker.\nPosition drill down in the position manager to isolate the impact of \nindividual deals on the position total in a grid cell.\nBenchmark positions in TDS.\nDeployment of TDS in Canada. Currency and volume uom conversions. Implicit \nand explicit position break out issues.\n\n-- Allan.\n\nPS: Colleen is setting up a meeting tomorrow to discuss the direction for \ntransport.  Hopefully we'll know much better where that part stands at that \npoint."
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"4",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<23790115.1075855667708.JavaMail.evans@thyme>",
+                    "Date":"Mon, 9 Oct 2000 07:00:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"keith.holst@enron.com",
+                    "Subject":"Consolidated positions: Issues & To Do list",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"Keith Holst",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"---------------------- Forwarded by Phillip K Allen/HOU/ECT on 10/09/2000 \n02:00 PM ---------------------------\n\n\nRichard Burchfield\n10/06/2000 06:59 AM\nTo: Phillip K Allen/HOU/ECT@ECT\ncc: Beth Perlman/HOU/ECT@ECT \nSubject: Consolidated positions: Issues & To Do list\n\nPhillip,\n Below is the issues & to do list as we go forward with documenting the \nrequirements for consolidated physical/financial positions and transport \ntrade capture. What we need to focus on is the first bullet in Allan's list; \nthe need for a single set of requirements. Although the meeting with Keith, \non Wednesday,  was
+informative the solution of creating a infinitely dynamic \nconsolidated position screen, will be extremely difficult and time \nconsuming.  Throughout the meeting on Wednesday, Keith alluded to the \ninability to get consensus amongst the traders on the presentation of the \nconsolidated position, so the solution was to make it so that a trader can \narrange the position screen to their liking (much like Excel). What needs to \nhappen on Monday from 3 - 5 is a effort to design a desired layout for the \nconsolidated position screen, this is critical. This does not exclude \nbuilding a capability to create a more flexible position presentation for the \nfuture, but in order to create a plan that can be measured we need firm \nrequirements. Also, to reiterate that the goals of this project is a project \nplan on consolidate physical/financial positions and transport trade capture. \nThe other issues that have been raised will be capture as projects on to \nthemselves, and will need to be prioritised as efforts outside of this \nproject.\n\nI have been involved in most of the meetings and the discussions have been \ngood. I believe there has been good communication between the teams, but now \nwe need to have focus on the objectives we set out to solve.\n\nRichard  \n---------------------- Forwarded by Richard Burchfield/HOU/ECT on 10/06/2000 \n08:34 AM ---------------------------\n\n\nAllan Severude\n10/05/2000 06:03 PM\nTo: Richard Burchfield/HOU/ECT@ECT\ncc: Peggy Alix/HOU/ECT@ECT, Russ Severson/HOU/ECT@ECT, Scott \nMills/HOU/ECT@ECT, Kenny Ha/HOU/ECT@ECT \nSubject: Consolidated positions: Issues & To Do list\n\n\nFrom our initial set of meetings with the traders regarding consolidated \npositions, I think we still have the following issues:\nWe don't have a single point of contact from the trading group.  We've had \nthree meetings which brought out very different issues from different \ntraders.  We really need a
+single point of contact to help drive the trader \nrequirements and help come to a consensus regarding the requirements.\nWe're getting hit with a lot of different requests, many of which appear to \nbe outside the scope of position consolidation.\n\nThings left to do:\nI think it may be useful to try to formulate a high level project goal to \nmake it as clear as possible what we're trying to accomplish with this \nproject.  It'll help determine which requests fall under the project scope.\nGo through the list of
+requests to determine which are in scope for this \nproject and which fall out of scope.\nFor those in scope, work to define relative importance (priority) of each and \nwork with traders to define the exact requirements of each.\nDefine the desired lay out of the position manager screen: main view and all \ndrill downs.\nUse the above to formulate a project plan.\n\nThings requested thus far (no particular order):\nInclusion of Sitara physical deals into the TDS position manager and deal \nticker.\nCustomized rows and columns in the position manager (ad hoc rows/columns that \nadd up existing position manager rows/columns).\nNew drill down in the position manager to break out positions by: physical, \ntransport, swaps, options, ...\nAddition of a curve tab to the position manager to show the real-time values \nof all curves on which the desk has a position.\nAbility to split the current position
+grid to allow daily positions to be \nshown directly above monthly positions.  Each grouped column in the top grid \nwould be tied to a grouped column in the bottom grid.\nAbility to properly show curve shift for float-for-float deals; determine the \nappropriate positions to show for each:\nGas Daily for monthly index,\nPhysical gas for Nymex,\nPhysical gas for Inside Ferc,\nPhysical gas for Mid market.\nAbility for TDS to pull valuation results based on a TDS flag instead of \nusing official valuations.\nPosition and P&L aggregation across all gas desks.\nAbility to include the Gas Price book into TDS:\nInclusion of spread options in our systems.  Ability to handle volatility \nskew and correlations.\nAbility to revalue all options incrementally throughout the trading day.  \nApproximate delta changes between valuations using instantaneous gamma or a \ngamma grid.\nValuation of Gas Daily options.\nA new position screen for options (months x strike x delta).  TBD.\nInclusion of positions for exotic options currently managed in spreadsheets.\nAbility to isolate the position change due to changed deals in the position \nmanager.\nAbility to view change
+deal P&L in the TDS deal ticker.  Show new deal terms, \nprior deal terms, and net P&L affect of the change.\nEliminate change deals with no economic impact from the TDS deal ticker.\nPosition drill down in the position manager to isolate the impact of \nindividual deals on the position total in a grid cell.\nBenchmark positions in TDS.\nDeployment of TDS in Canada. Currency and volume uom conversions. Implicit \nand explicit position break out issues.\n\n-- Allan.\n\nPS: Colleen is setting up a meeting tomorrow to discuss the direction for \ntransport.  Hopefully we'll know much better where that part stands at that \npoint."
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"5",
+                "_score":1.0,
+                "_source":{
+                    "Message-ID":"<5860470.1075855667730.JavaMail.evans@thyme>",
+                    "Date":"Thu, 5 Oct 2000 06:26:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"david.delainey@enron.com",
+                    "Subject":"",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"David W Delainey",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"Dave, \n\n Here are the names of the west desk members by category.  The origination \nside is very sparse.  \n\n\n\n\n\nPhillip"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"6",
+                "_score":1.0,
+                "_source":{
+                    "Message-ID":"<14670081.1075855667751.JavaMail.evans@thyme>",
+                    "Date":"Thu, 5 Oct 2000 05:55:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"paula.harris@enron.com",
+                    "Subject":"Re: 2001 Margin Plan",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"Paula Harris",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"Paula,\n\n 35 million is fine\n\nPhillip"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"7",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<2101427.1075855667773.JavaMail.evans@thyme>",
+                    "Date":"Wed, 4 Oct 2000 09:23:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"ina.rangel@enron.com",
+                    "Subject":"Var, Reporting and Resources Meeting",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"Ina Rangel",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"---------------------- Forwarded by Phillip K Allen/HOU/ECT on 10/04/2000 \n04:23 PM ---------------------------\n   \n\tEnron North America Corp.\n\t\n\tFrom:  Airam Arteaga                           10/04/2000 12:23 PM\n\t\n\nTo: Phillip K Allen/HOU/ECT@ECT, Thomas A Martin/HOU/ECT@ECT, Scott \nNeal/HOU/ECT@ECT, John Arnold/HOU/ECT@ECT, Grant Masson/HOU/ECT@ECT, Ted \nMurphy/HOU/ECT@ECT, Vladimir Gorny/HOU/ECT@ECT, Frank Hayden/Corp/Enron@Enron\ncc: Rita Hennessy/NA/Enron@Enron, Ina Rangel/HOU/ECT@ECT, Laura \nHarder/Corp/Enron@Enron, Kimberly Brown/HOU/ECT@ECT, Araceli \nRomero/NA/Enron@Enron, Kimberly Hillis/HOU/ECT@ect \nSubject: Var, Reporting and Resources Meeting\n\nPlease plan to attend the below  Meeting:\n\n\n
+                  Topic:  Var, Reporting and Resources Meeting\n        \n  Date:  Wednesday, October 11th\n\n  Time:  2:30 - 3:30 \n\n  Location: EB30C1\n\n  \n\n If you have any questions/conflicts, please feel free to call me.\n\nThanks,\nRain\nx.31560"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"8",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<19431120.1075855667795.JavaMail.evans@thyme>",
+                    "Date":"Tue, 3 Oct 2000 09:30:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"pallen70@hotmail.com",
+                    "Subject":"Westgate",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"pallen70@hotmail.com",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"---------------------- Forwarded by Phillip K Allen/HOU/ECT on 10/03/2000 \n04:30 PM ---------------------------\n\n\n\"George Richards\" <cbpres@austin.rr.com> on 10/03/2000 06:35:56 AM\nPlease respond to <cbpres@austin.rr.com>\nTo: \"Phillip Allen\" <pallen@enron.com>\ncc: \"Larry Lewter\" <retwell@mail.sanmarcos.net> \nSubject: Westgate\n\n\nWestgate\n\nEnclosed are demographics on the Westgate site from Investor's Alliance.\nInvestor's Alliance says that these demographics are similar to the package\non San Marcos that you received earlier.\nIf there are any other questions or information requirements,
+let me know.\nThen, let me know your interest level in the Westgate project?\n\nSan Marcos\nThe property across the street from the Sagewood units in San Marcos is for\nsale and approved for 134 units.  The land is selling for $2.50 per square\nfoot as it is one of only two remaining approved multifamily parcels in West\nSan Marcos, which now has a moratorium on development.\n\nSeveral new studies we have looked at show that the rents for our duplexes\nand for these new units are going to be significantly higher, roughly $1.25\nper square foot if leased for the entire unit on a 12-month lease and\n$1.30-$1.40 psf if leased on a 12-month term, but by individual room.  This\nproperty will have the best location for student housing of all new\nprojects, just as the duplexes do now.\n\nIf this project is of serious interest to you, please let me know as there\nis a very, very short window of opportunity.  The equity requirement is not\nyet known, but it would be likely to be $300,000 to secure the land.  I will\nknow more on this question later today.\n\nSincerely,\n\nGeorge W. Richards\nPresident, Creekside Builders, LLC\n\n\n - winmail.dat"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"9",
+                "_score":1.0,
+                "_ignored":[
+                    "Mail-Content.keyword"
+                ],
+                "_source":{
+                    "Message-ID":"<27111747.1075855667816.JavaMail.evans@thyme>",
+                    "Date":"Tue, 3 Oct 2000 09:15:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"ina.rangel@enron.com",
+                    "Subject":"Meeting re: Storage Strategies in the West",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"Ina Rangel",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"---------------------- Forwarded by Phillip K Allen/HOU/ECT on 10/03/2000 \n04:13 PM ---------------------------\n\n\nNancy Hall@ENRON\n10/02/2000 06:42 AM\nTo: Mark Whitt/NA/Enron@Enron, Phillip K Allen/HOU/ECT@ECT, Paul T
+\nLucci/NA/Enron@Enron, Paul Bieniawski/Corp/Enron@ENRON, Tyrell \nHarrison/NA/Enron@Enron\ncc: Jean Mrha/NA/Enron@Enron, Ina Rangel/HOU/ECT@ECT, Monica \nJackson/Corp/Enron@ENRON \nSubject: Meeting re: Storage Strategies in the West\n\nThere will be a meeting on Tuesday, Oct. 10th at 4:00pm in EB3270 regarding \nStorage Strategies in the West.  Please mark your calendars.\n\nThank you!\n\nRegards,\nNancy Hall\nENA Denver office\n303-575-6490"
+                }
+            },
+            {
+                "_index":"enron-email",
+                "_type":"_doc",
+                "_id":"10",
+                "_score":1.0,
+                "_source":{
+                    "Message-ID":"<31503589.1075855667838.JavaMail.evans@thyme>",
+                    "Date":"Tue, 3 Oct 2000 09:13:00 -0700 (PDT)",
+                    "From":"phillip.allen@enron.com",
+                    "To":"bs_stone@yahoo.com",
+                    "Subject":"",
+                    "Mime-Version":"1.0",
+                    "Content-Type":"text/plain; charset=us-ascii",
+                    "Content-Transfer-Encoding":"7bit",
+                    "X-From":"Phillip K Allen",
+                    "X-To":"bs_stone@yahoo.com",
+                    "X-cc":"",
+                    "X-bcc":"",
+                    "X-Folder":"\\Phillip_Allen_Dec2000\\Notes Folders\\All documents",
+                    "X-Origin":"Allen-P",
+                    "X-FileName":"pallen.nsf",
+                    "Mail-Content":"Brenda,\n\nPlease use the second check as the October payment.  If you have already \ntossed it, let me know so I can mail you another.\n\nPhillip"
+                }
+            }
+        ]
+    }
+}
