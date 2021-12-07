@@ -1,0 +1,5 @@
+f = open("/mnt/c/Users/16834/Desktop/NKUSearch/history.txt")
+line = f.readline()
+# print(line)
+f.close()
+print(line)

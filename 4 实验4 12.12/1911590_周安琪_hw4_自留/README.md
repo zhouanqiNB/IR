@@ -1,0 +1,3 @@
+如果想复现你心爱的搜索引擎，你得把frontend.rar解压到7文件夹里面（先下载你的互联网数据库大作业，然后解压到xampp的htdocs文件夹然后用这个frontend换掉那个里面的frontend就可以跑啦！）
+
+并且把NKUSearch.rar解压到桌面，要桌面哦！
